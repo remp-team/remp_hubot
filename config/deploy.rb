@@ -42,6 +42,19 @@ task :setup => :environment do
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 end
 
+# Hubot contorol
+
+namespace :hubot do
+  desc "Hubot start"
+  task :restart do
+    queue 'echo "-----> Start Hubot."'
+    queue! %{
+      supervisorctl restart Hubot
+    }
+  end
+end
+
+
 desc "Deploys the current version to the server."
 task :deploy => :environment do
   deploy do
@@ -52,6 +65,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
 
     to :launch do
+      invoke :'hubot:restart'
       queue "touch #{deploy_to}/tmp/restart.txt"
     end
   end
