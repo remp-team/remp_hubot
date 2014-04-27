@@ -17,5 +17,8 @@ module.exports = (robot) ->
 
   deploy = (msg, app) ->
     exec "cd tmp/#{app} && bundle install && bundle exec mina deploy", (err, stdout, stderr) ->
-      msg.send "--- Deploy finished."
+      if err
+        msg.send "--- [Error!!] Deploy failed."
+      else
+        msg.send "--- Deploy finished."
 
