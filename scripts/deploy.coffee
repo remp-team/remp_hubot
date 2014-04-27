@@ -16,7 +16,7 @@ module.exports = (robot) ->
       msg.send "--- Deploy failed. (Project name unmatched.)"
 
   deploy = (msg, app) ->
-    exec "cd tmp/#{app} && bundle install && bundle exec mina deploy", (err, stdout, stderr) ->
+    exec "cd tmp/#{app} && bundle install --path vendor/bundle && bundle exec mina deploy", (err, stdout, stderr) ->
       if err
         msg.send "--- [Error!!] Deploy failed."
       else
