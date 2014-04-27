@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['log']
+set :shared_paths, ['log', 'tmp']
 
 # Optional settings:
 set :user, 'remper'    # Username in the server to SSH to.
@@ -39,7 +39,9 @@ end
 # all releases.
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[mkdir -p "#{deploy_to}/shared/tmp"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp"]
 end
 
 # Hubot contorol
