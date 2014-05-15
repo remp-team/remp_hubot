@@ -3,6 +3,7 @@
 #
 # Commands:
 #   hubot status - Reply with application status.
+
 cronJob = require('cron').CronJob
 
 module.exports = (robot) ->
@@ -20,7 +21,7 @@ module.exports = (robot) ->
           msg.send "再生回数: #{json.today_play_count}"
           msg.send "検索回数: #{json.today_search_count}"
 
-  new cronJob('*/5 * * * * *', () ->
+  new cronJob('0 * * * *', () ->
     http = robot.http('http://www.remp.jp/api/status').get()
     http (err, res, body) ->
       if(!err)
