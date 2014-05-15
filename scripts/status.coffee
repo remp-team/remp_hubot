@@ -2,7 +2,7 @@
 #   REMP status.
 #
 # Commands:
-#   hubot status - Reply with pong
+#   hubot status - Reply with application status.
 
 module.exports = (robot) ->
   robot.respond /status (.*)$/i , (msg) ->
