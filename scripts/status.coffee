@@ -26,7 +26,7 @@ module.exports = (robot) ->
     http (err, res, body) ->
       if(!err)
         json = JSON.parse body
-        robot.send {room:'#remp_team'}, "--- REMP status ---"
-        robot.send {room:'#remp_team'}, "再生回数: #{json.today_play_count}"
-        robot.send {room:'#remp_team'}, "検索回数: #{json.today_search_count}"
+        robot.send {room:'remp_team'}, "--- REMP status ---"
+        robot.send {room:'remp_team'}, "再生回数: #{json.today_play_count}"
+        robot.send {room:'remp_team'}, "検索回数: #{json.today_search_count}"
   ).start()
