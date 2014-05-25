@@ -12,6 +12,16 @@
 Hubot> hubot deploy (remp|stbd|casto)
 ```
 
+#### アプリケーションパラメータ取得
+- チャットサービス上にいるユーザであれば、アプリケーションのパラメータを取得することができます。
+ - 現在のところREMPのみ
+
+```
+Hubot> hubot status remp
+Hubot> Application status: remp
+Hubot> 再生回数: ***
+Hubot> 検索回数: ***
+```
 
 #### Hubotコマンド
 

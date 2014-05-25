@@ -21,7 +21,7 @@ module.exports = (robot) ->
           msg.send "再生回数: #{json.today_play_count}"
           msg.send "検索回数: #{json.today_search_count}"
 
-  new cronJob('0 * * * *', () ->
+  new cronJob('0 */4 * * *', () ->
     http = robot.http('http://www.remp.jp/api/status').get()
     http (err, res, body) ->
       if(!err)
