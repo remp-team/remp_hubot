@@ -24,14 +24,17 @@ module.exports = (robot) ->
       else
         msg.send "--- Deploy finished."
 
-  new cronJob('20 15 * * *', () ->
+  new cronJob('04 04 * * *', () ->
     projects = ["remp", "stbd", "casto"]
 
-    for pj,i in projects
-      exec "cd tmp/#{pj} && bundle exec mina deploy:cleanup", (err, stdout, stderr) ->
+    cleanup = (pjName) ->
+      exec "cd tmp/#{pjName} && bundle exec mina deploy:cleanup", (err, stdout, stderr) ->
         if err
-          robot.send {room:'remp_team'}, "#{pj} container deploy:cleanup failed....."
+          robot.send {room:'remp_team'}, "#{pjName} container deploy:cleanup failed....."
         else
-          robot.send {room:'remp_team'}, "#{pj} container deploy:cleanup success....."
+          robot.send {room:'remp_team'}, "#{pjName} container deploy:cleanup success!!"
+
+    for pj,i in projects
+      cleanup(pj)
 
   ).start()
