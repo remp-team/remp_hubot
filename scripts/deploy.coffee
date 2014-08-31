@@ -5,7 +5,7 @@ module.exports = (robot) ->
   robot.respond /deploy (.*)$/i , (msg) ->
     application = msg.match[1]
 
-    projects = ["remp", "stbd", "casto"]
+    projects = ["remp", "stbd", "casto", "mo-api"]
 
     if application in projects
       msg.send "╭( ･ㅂ･)و＜  Deploy Starting. #{application} project."
@@ -48,7 +48,7 @@ module.exports = (robot) ->
 
 
   new cronJob('04 04 * * *', () ->
-    projects = ["remp", "stbd", "casto"]
+    projects = ["remp", "stbd", "casto", "mo-api"]
 
     for pj,i in projects
       cleanup(pj)
