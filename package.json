@@ -21,10 +21,11 @@
     "url": "https://github.com/github/hubot.git"
   },
   "dependencies": {
-    "hubot": ">= 2.6.0 < 3.0.0",
-    "hubot-scripts": ">= 2.5.0 < 3.0.0",
-    "hubot-lingr": "~0.1.1",
     "cron": "~1.0.4",
+    "hubot": ">= 2.6.0 < 3.0.0",
+    "hubot-lingr": "~0.1.1",
+    "hubot-scripts": ">= 2.5.0 < 3.0.0",
+    "hubot-slack": "^3.2.1",
     "step": "0.0.5"
   },
   "engines": {
